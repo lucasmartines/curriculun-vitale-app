@@ -13,12 +13,19 @@ let Form = props => {
 
     return(<form onSubmit={handleSubmit} >
         <div className="container">
-            <Field 
+            <div className="row">
+                <Field 
                 name="name"
                 component="input"
                 type="text"
-                className="header_input_name h3 col-12 "
+                className="header_input_name h3 col-12 col-md-8 "
                 placeholder="Seu Nome" />
+                <div className="col-12 col-md-4">
+                    {props.children}
+                </div>
+            </div>
+            
+            
         </div>
     </form>)
 }
@@ -35,8 +42,10 @@ let Header = props => {
             _getUserData()            
         })
 
-    /** wrap get user data */
+    /** wrap get user data method */
         const _getUserData = () => {
+
+            /** get user data fron database */
             getUserData(
                 props.user._id ,
                 res => {
@@ -55,7 +64,6 @@ let Header = props => {
             user ,
             res => {
                 console.log('just i have submited in header the user data ')
-                //initialize('user_form',user)
             } ,
             err => console.log(err)  )
       }
@@ -64,7 +72,9 @@ let Header = props => {
     /** RENDER the form */
     return( 
       <header>
-          <Form onSubmit={handleSubmit}/>
+          <Form onSubmit={handleSubmit}>
+              Imagem
+          </Form>
       </header>
     )
 }
