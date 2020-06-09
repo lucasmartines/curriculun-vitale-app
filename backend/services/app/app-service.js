@@ -15,8 +15,8 @@ module.exports = (app) => {
     app.use(bodyParser.json())
 
     /** send static file front end */
-        app.get('/', (req, res) => {
-          res.send('I an the server of curriculun-vitale-app')
-        })
+    app.get('/', (req, res) => {
+      res.send('I an the server of curriculun-vitale-app')
+    })
 
 }

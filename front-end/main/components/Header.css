@@ -1,0 +1,10 @@
+/* input of header*/
+.header_input_name{
+    border: none;
+    text-align: center;
+
+}
+.header_input_name:focus{
+    border: 0px !important;
+    border-bottom: 2px solid currentColor;
+}
