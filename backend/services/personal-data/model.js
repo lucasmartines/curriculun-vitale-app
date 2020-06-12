@@ -13,6 +13,7 @@ const PersonalData = new restful.mongoose.Schema({
   civilState: { required: false, type: String },
   sex: { required: false, type: String, enum: ["M", "W"] },
   tel: { required: false, type: String },
+  age: { required: false, type: String },
   cel: { required: false, type: String },
   email: { required: false, type: String },
   ocupation: { required: false, type: String },

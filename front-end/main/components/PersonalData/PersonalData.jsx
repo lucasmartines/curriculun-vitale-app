@@ -99,6 +99,13 @@ const PersonalData = ({ user }) => {
                 span="Your Email"
                 placeholder="your-email@email.com"
               />
+              <Field
+                name="age"
+                render={genericField}
+                type="number"
+                span="Age"
+                placeholder="Your Age"
+              />
               <SexField values={values}/>
 
               <SubmitButton disabled={!valid}>Update</SubmitButton>
@@ -120,8 +127,12 @@ const notEmptyValidator = (values) => {
   if (!values.tel) {
     errors.tel = "Atention: Must NOT Be Empty";
   }
+  
   if (!values.email) {
     errors.email = "Atention: Must NOT Be Empty";
+  }
+  else if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( values.email )){
+    errors.email = "Atention: email must Be valid";
   }
 
   
