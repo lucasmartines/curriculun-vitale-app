@@ -1,0 +1,36 @@
+.exp_academic{
+    /*structure*/
+    
+    
+    /*style*/
+
+}
+.exp_academic_header{
+    /*structure*/
+    font-weight: lighter;
+    
+    /*style*/
+
+}
+.exp_academic_header span{
+    /* structure */
+
+    /* style */
+    font-size: 14px;
+}
+.exp_academic_form{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+}
+.form_item{
+    margin-top: 5px;
+}
+
+.exp_academic_body{
+    /*structure*/
+    
+    
+    /*style*/
+
+}

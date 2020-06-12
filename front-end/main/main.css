@@ -1,0 +1,33 @@
+:root{
+    --background-general:rgb(29, 32, 36);
+    --text-color: white;
+}
+form{
+    padding: 0;
+}
+
+#app{
+    /*style*/
+    color: #eae9ef;
+    background:var(--background-general);
+    min-height: 100vh;
+}
+.form-control{
+    background:#495057;
+    border-color: #1d2024;
+    color:#ddd;
+}
+.form-control:focus{
+    background: #1D2024;
+    color:white;
+}
+input:focus{
+    background: #646464;
+    border:none;
+}
+.hidden{
+    visibility: hidden;
+}
+.btn-submit{
+    background: #1d2024;
+}

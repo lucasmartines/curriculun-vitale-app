@@ -2,7 +2,7 @@ import './Header.css'
 
 import React,{useEffect} from 'react'
 import {reduxForm,Field} from 'redux-form'
-import { postUser, getUserData} from '../services/user.js'
+import { postUser, getUserData} from '../../services/user.js'
 
 import {initialize}from 'redux-form'
 import {useDispatch,useSelector} from 'react-redux'
@@ -14,18 +14,15 @@ let Form = props => {
     return(<form onSubmit={handleSubmit} >
         <div className="container">
             <div className="row">
+                {/* the user will fill the name */}
                 <Field 
-                name="name"
-                component="input"
-                type="text"
-                className="header_input_name h3 col-12 col-md-8 "
-                placeholder="Seu Nome" />
-                <div className="col-12 col-md-4">
-                    {props.children}
-                </div>
+                    name="name"
+                    component="input"
+                    type="text"
+                    className="header_input_name h3 col "
+                    placeholder="Seu Nome" />
+                {props.children}
             </div>
-            
-            
         </div>
     </form>)
 }
@@ -56,14 +53,29 @@ let Header = props => {
         }
     
     /** when user submit form */
-      const handleSubmit = (data) => {
-          
-          let user = { _id : props.user._id , ...data }
+      const handleSubmit = (_user) => {
+        
+        /** if field is null */
+        if( !_user.name.trim() )
+        {   
+            /** get the old value fron database, i need to discover a method of reseting
+             * the form whitout going to database
+             */
+            getUserData( 
+                props.user._id , 
+                response => 
+                    dispatch(initialize('user_form',response)) ,
+                err      => console.warn(err)   )
+            
+            alert('erro não foi possivel atualizar pois o campo está vazio')
+            return 
+        }
+          let user = { _id : props.user._id , ..._user }
 
           postUser(
             user ,
             res => {
-                console.log('just i have submited in header the user data ')
+                console.log('SUCCESS: just i have submited in header the user data ')
             } ,
             err => console.log(err)  )
       }
@@ -71,9 +83,11 @@ let Header = props => {
 
     /** RENDER the form */
     return( 
-      <header>
+      <header className="nav_header_style">
           <Form onSubmit={handleSubmit}>
-              Imagem
+            <div className="nav_header_icon_container col">
+                <i className="nav_header_icon"></i>
+            </div>            
           </Form>
       </header>
     )

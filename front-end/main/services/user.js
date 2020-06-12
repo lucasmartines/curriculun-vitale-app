@@ -50,7 +50,7 @@ export const getUserData = ( _id , callback , error = () => {} ) => {
         error('Id Não definido!')
         return 
     }
-
+ 
     axios.get(`${url_base}/api/personal-data/${_id}`)
         .then ( res => {
             callback(res.data)

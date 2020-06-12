@@ -7,6 +7,7 @@ module.exports = (app) => {
     app.use('/api',PersonalDataRoute)
 
     PersonalData.methods(['get','post','put','delete'])
+    PersonalData.updateOptions({new:true,runValidators:true})
     PersonalData.register(PersonalDataRoute,'/personal-data')
 
     
